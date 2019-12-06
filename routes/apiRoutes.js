@@ -4,23 +4,24 @@ const path = require("path");
 var noteData;
 
 module.exports = function (app) {
-    fs.readFile("./db/db.json", "utf8", function (err, data) {
+    fs.readFile("db.json", "utf8", function (err, data) {
         if (err) throw err;
         noteData = JSON.parse(data);
     })
 
     app.get("/api/notes", function (req, res) {
-        // console.log('in get')
-        // console.log(noteData)
+        console.log('in get');
+        // console.log(noteData);
         res.json(noteData);
     });
 
 
     app.post("/api/notes", function (req, res) {
+        console.log("test");
         var newNote = req.body;
         noteData.push(newNote);
-        let parsedata = JSON.stringify(newNote)
-        fs.writeFile(path.join(__dirname, '../db/db.json'), parsedata, (err) => {
+        let parsedata = JSON.stringify(noteData)
+        fs.writeFile(path.join(__dirname, '../db.json'), parsedata, (err) => {
             if (err) throw err;
             console.log("Delete success");
         })
@@ -40,10 +41,10 @@ module.exports = function (app) {
             };
         };
         let parsedata = JSON.stringify(noteData)
-        fs.writeFile(path.join(__dirname, '../db/db.json'), parsedata, (err) => {
+        fs.writeFile(path.join(__dirname, 'db.json'), parsedata, (err) => {
            if (err) throw err;
            console.log("Delete success");
        })
         console.log(noteData)
         res.json(noteData)
-    })
+    })}
