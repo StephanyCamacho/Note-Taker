@@ -64,6 +64,7 @@ var handleNoteSave = function() {
 
 // Delete the clicked note
 var handleNoteDelete = function(event) {
+  console.log("I clicked the delete button");
   // prevents the click listener for the list from being called when the button inside of it is clicked
   event.stopPropagation();
 
@@ -71,11 +72,14 @@ var handleNoteDelete = function(event) {
     .parent(".list-group-item")
     .data();
 
-  if (activeNote.id === note.id) {
-    activeNote = {};
-  }
+    console.log(note);
+  
 
-  deleteNote(note.id).then(function() {
+  // if (activeNote.id === note.id) {
+  //   activeNote = {};
+  // }
+
+  deleteNote(note.title).then(function() {
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -96,7 +100,6 @@ var handleNewNoteView = function() {
 // If a note's title or text are empty, hide the save button
 // Or else show it
 var handleRenderSaveBtn = function() {
-  console.log("hi");
   if (!$noteTitle.val().trim() || !$noteText.val().trim()) {
     $saveNoteBtn.hide();
   } else {
@@ -142,5 +145,3 @@ $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
-
-var test = "hey";
