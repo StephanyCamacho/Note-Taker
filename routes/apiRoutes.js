@@ -1,8 +1,6 @@
 const fs = require("fs")
 const path = require("path");
 
-
-
 var noteData;
 
 module.exports = function (app) {
