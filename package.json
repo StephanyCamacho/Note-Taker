@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/StephanyCamacho/Note-Taker#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "require-path": "^0.3.0"
   }
 }
